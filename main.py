@@ -11,15 +11,15 @@ def hello():
     else:
         # Lay tu form
         user_message = request.form['user_message']
-        noidungchathientai = request.form['chat_content']
+        currentConversation = request.form['chat_content']
 
         # Ban len rasa
         r = requests.post('http://127.0.0.1:5005/webhooks/rest/webhook', json={"sender": "test", "message": user_message})
         print(r.json())
-        noidungchathientai += "\n[BẠN]:" + user_message
-        noidungchathientai += "\n[BOT]:" + r.json()[0]["text"]
+        currentConversation += "\n[You]:" + user_message
+        currentConversation += "\n[BOT]:" + r.json()[0]["text"]
 
-        return render_template('index.html', noidungchathientai = noidungchathientai)
+        return render_template('index.html', currentConversation = currentConversation)
 
 
 # Execute server
