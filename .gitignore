@@ -163,4 +163,3 @@ cython_debug/
 # Rasa
 .rasa/
 .rasa
-models/
